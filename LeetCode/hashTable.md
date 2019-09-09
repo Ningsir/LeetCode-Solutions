@@ -1,7 +1,10 @@
-[toc]
+# 目录
+*  [Single Number(找到数组中只出现一次的整型数字)](#Single-Number)
+* [Valid Sudoku(有效数独)](#Valid-Sudoku)
+* [Isomorphic String(同构字符串)](#Isomorphic-String)
 
 # 哈希表
-### 1. Single Number(找到数组中只出现一次的整型数字)
+### Single-Number
 题目描述
 > Given a non-empty array of integers, every element appears twice except for one. Find that single one. 
   Note:  
@@ -27,7 +30,7 @@ public class SingleNumber {
     
 ```
 
-### 2. Valid Sudoku(有效数独)
+### Valid-Sudoku
 题目描述
 > Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
   Each row must contain the digits 1-9 without repetition.
@@ -74,7 +77,7 @@ public class ValidSudoku {
 }
 ```
 
-### 3. Isomorphic String(同构字符串)
+### Isomorphic-String
 题目描述
 > Given two strings s and t, determine if they are isomorphic.
 Two strings are isomorphic if the characters in s can be replaced to get t.
