@@ -1,5 +1,7 @@
+[Toc]
+
 # 哈希表
-### 1. Single Number
+### 1. Single Number(找到数组中只出现一次的整型数字)
 题目描述
 > Given a non-empty array of integers, every element appears twice except for one. Find that single one. 
   Note:  
@@ -25,7 +27,7 @@ public class SingleNumber {
     
 ```
 
-### 2. Valid Sudoku
+### 2. Valid Sudoku(有效数独)
 题目描述
 > Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
   Each row must contain the digits 1-9 without repetition.
@@ -70,5 +72,30 @@ public class ValidSudoku {
         return true;
     }
 }
+```
 
+### 3. Isomorphic String(同构字符串)
+题目描述
+> Given two strings s and t, determine if they are isomorphic.
+Two strings are isomorphic if the characters in s can be replaced to get t.
+All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.
+
+比如 `s = "foo"` 与 `t = "tee"`是同构的， 而 `t = "ab"` 与 `s = "aa"`不是同构的。即相同位置的字母是互相等价的，能够互换。可以利用 `HashMap` 键值对应的性质来解决此题，即一个键只能对应一个值，如果对应了其他值，则说明两个字符串不是同构的。但需要注意第一次使用 `s`中的字符作为 `key`, 第二次使用 `t` 中的字符作为 `key`。
+```java
+public  boolean isIsomorphic(String s, String t){
+       return isomorphic(s, t) && isomorphic(t, s);
+    }
+
+    public boolean isomorphic(String s, String t){
+        if(s.length() != t.length()) return false;
+        HashMap<Character, Character> map = new HashMap<>();
+        for(int i = 0; i < s.length(); i++){
+            if(map.containsKey(s.charAt(i)) && !map.get(s.charAt(i)).equals(t.charAt(i)))
+                return false;
+            else{
+                map.put(s.charAt(i), t.charAt(i));
+            }
+        }
+        return true;
+    }
 ```
