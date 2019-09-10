@@ -2,6 +2,7 @@
 *  [Single Number(找到数组中只出现一次的整型数字)](#Single-Number)
 * [Valid Sudoku(有效数独)](#Valid-Sudoku)
 * [Isomorphic String(同构字符串)](#Isomorphic-String)
+* [BullsAndCows](#BullsAndCows)
 
 # 哈希表
 ### Single-Number
@@ -100,5 +101,57 @@ public  boolean isIsomorphic(String s, String t){
             }
         }
         return true;
+    }
+```
+
+### BullsAndCows
+题目描述
+>      * You are playing the following Bulls and Cows game with your friend: You write down a number and ask your friend to guess what the number is. Each time your friend makes a guess, you provide a hint that indicates how many digits in said guess match your secret number exactly in both digit and position (called "bulls") and how many digits match the secret number but locate in the wrong position (called "cows"). Your friend will use successive guesses and hints to eventually derive the secret number.
+>       *
+>       * Write a function to return a hint according to the secret number and friend's guess, use A to indicate the bulls and B to indicate the cows. 
+>       *
+>       * Please note that both secret number and friend's guess may contain duplicate digits.
+>       * bulls：位置和数字完全相同
+>       * cows：位置不同，但存在该数字
+>       * getHint：得到bulls 和 cows 的个数
+>       * Example 1:
+>       *
+>       * Input: secret = "1807", guess = "7810"
+>       *
+>       * Output: "1A3B"
+>       *
+>       * Explanation: 1 bull and 3 cows. The bull is 8, the cows are 0, 1 and 7.
+>       * Example 2:
+>       *
+>       * Input: secret = "1123", guess = "0111"
+>       *
+>       * Output: "1A1B"
+>       *
+>       * Explanation: The 1st 1 in friend's guess is a bull, the 2nd or 3rd 1 is a cow.
+      
+得到 A 的个数比较简单，只需遍历两个字符串并比较相同位置上的字符是否相同即可。
+为了获取 B 的个数，可以统计猜错位置每个数字的个数，用一个长度为10的int类型数组表示，下标表示每个数字，对应每个数组值
+表示数字的个数。
+
+```java
+public String getHint(String secret, String guess){
+        if(secret == null) return null;
+        int bull = 0, cow = 0;
+        //统计猜错位置上每个数字的个数
+        int[] countA = new int[10];
+        int[] countB = new int[10];
+        for(int i = 0; i < secret.length(); i ++){
+            if(secret.charAt(i) == guess.charAt(i)){
+                bull++;
+            }else{
+                countA[secret.charAt(i) - '0']++;
+                countB[guess.charAt(i) - '0']++;
+            }
+        }
+        for(int i = 0; i < 10; i++){
+            cow += Math.min(countA[i], countB[i]);
+        }
+        return bull + "A" + cow + "B";
+
     }
 ```
