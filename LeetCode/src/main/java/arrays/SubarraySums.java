@@ -33,7 +33,7 @@ public class SubarraySums {
         for(int i : count){
             res += i * (i - 1) / 2;
         }
-        return res;
+        return res + count[0];
 
     }
 
@@ -60,6 +60,6 @@ public class SubarraySums {
         int[] a= {4, 5, 0, -2, -3, 1};
         SubarraySums s = new SubarraySums();
         System.out.println(s.subarraysDivByK2(a, 5));
-        System.out.println(-1 % 5);
+
     }
 }

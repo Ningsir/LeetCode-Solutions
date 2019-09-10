@@ -63,7 +63,8 @@ public int subarraysDivByK(int[] A, int K){
         for(int i : count){
             res += i * (i - 1) / 2;
         }
-        return res;
+        //注意余数为0的子数组直接满足条件
+        return res + count[0];
 
     }
 ```
