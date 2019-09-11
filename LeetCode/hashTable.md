@@ -1,11 +1,12 @@
 # 目录
-*  [Single Number(找到数组中只出现一次的整型数字)](#Single-Number)
-* [Valid Sudoku(有效数独)](#Valid-Sudoku)
-* [Isomorphic String(同构字符串)](#Isomorphic-String)
-* [BullsAndCows](#BullsAndCows)
+*  [1.Single Number(找到数组中只出现一次的整型数字)](#1.Single-Number)
+* [2.Valid Sudoku(有效数独)](#2.Valid-Sudoku)
+* [3.Isomorphic String(同构字符串)](#3.Isomorphic-String)
+* [4.BullsAndCows](#4.BullsAndCows)
+* [5.Longest-Substring-Without-Repeating-Characters](#5.Longest-Substring-Without-Repeating-Characters)
 
 # 哈希表
-### Single-Number
+### 1.Single-Number
 题目描述
 > Given a non-empty array of integers, every element appears twice except for one. Find that single one. 
   Note:  
@@ -31,7 +32,7 @@ public class SingleNumber {
     
 ```
 
-### Valid-Sudoku
+### 2.Valid-Sudoku
 题目描述
 > Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
   Each row must contain the digits 1-9 without repetition.
@@ -78,7 +79,7 @@ public class ValidSudoku {
 }
 ```
 
-### Isomorphic-String
+### 3.Isomorphic-String
 题目描述
 > Given two strings s and t, determine if they are isomorphic.
 Two strings are isomorphic if the characters in s can be replaced to get t.
@@ -104,7 +105,7 @@ public  boolean isIsomorphic(String s, String t){
     }
 ```
 
-### BullsAndCows
+### 4.BullsAndCows
 题目描述
 >      * You are playing the following Bulls and Cows game with your friend: You write down a number and ask your friend to guess what the number is. Each time your friend makes a guess, you provide a hint that indicates how many digits in said guess match your secret number exactly in both digit and position (called "bulls") and how many digits match the secret number but locate in the wrong position (called "cows"). Your friend will use successive guesses and hints to eventually derive the secret number.
 >       *
@@ -154,4 +155,32 @@ public String getHint(String secret, String guess){
         return bull + "A" + cow + "B";
 
     }
+```
+
+### 5.Longest-Substring-Without-Repeating-Characters
+[参考链接](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/solution/wu-zhong-fu-zi-fu-de-zui-chang-zi-chuan-by-leetcod/)
+#### 题目描述
+> 求解没有重复字母的最长连续子字符串
+#### 方法一：暴力法
+#### 方法二：滑动窗口法
+使用 i、j 表示下标，每次寻找最大 j 满足：s[i]~s[j] 没有重复字母，查询是否有重复字母时可以使用 `HashSet`，
+因为`contains()` 操作时间复杂的为`O(1)`.
+```java
+public int lengthOfLongestSubstring2(String s){
+        HashSet<Character> set = new HashSet<>();
+        int n = s.length();
+        int i = 0;
+        int j = 0;
+        int res = 0;
+        while(i < n && j < n){
+            if(!set.contains(s.charAt(j))){
+                set.add(s.charAt(j++));
+                res = Math.max(res, j - i);
+            }else{
+                set.remove(s.charAt(i++));
+            }
+        }
+        return res;
+    }
+
 ```
