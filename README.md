@@ -4,3 +4,5 @@
 [1.hash table](/LeetCode/hashTable.md)
 
 [2.arrays](/LeetCode/arrays.md)
+
+[3.string](./LeetCode/string.md)
