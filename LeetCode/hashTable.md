@@ -2,7 +2,7 @@
 *  [1.Single Number(找到数组中只出现一次的整型数字)](#1Single-Number)
 * [2.Valid Sudoku(有效数独)](#2Valid-Sudoku)
 * [3.Isomorphic String(同构字符串)](#3Isomorphic-String)
-* [4.BullsAndCows](#4.BullsAndCows)
+* [4.BullsAndCows](#4BullsAndCows)
 * [5.Longest-Substring-Without-Repeating-Characters](#5Longest-Substring-Without-Repeating-Characters)
 * [6.Copy-List-With-Random-Pointer](#6Copy-List-With-Random-Pointer)
 # 哈希表
