@@ -19,6 +19,8 @@
  * a ^ a = 0;
  * a ^ b = 1;(a != b)
  * 满足交换律
+ 
+ [代码](./src/main/java/hash/SingleNumber.java)
 ```java
 public class SingleNumber {
     public int singleNumber(int[] nums) {
@@ -44,6 +46,8 @@ public class SingleNumber {
 此题用来简单判断数独是否有效，只需要判断每行、每列及每个子数独是否存在重复数字。
 所以只需要分别将上述出现的情况用list存储，判断是否出现重复数字即可。其中子数独
 的下标可以如此表示`(row / 3) * 3 + column / 3`。
+
+[代码](./src/main/java/hash/ValidSudoku.java)
 ```java
 public class ValidSudoku {
     public boolean isValidSudoku(char[][] board) {
@@ -86,6 +90,8 @@ Two strings are isomorphic if the characters in s can be replaced to get t.
 All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.
 
 比如 `s = "foo"` 与 `t = "tee"`是同构的， 而 `t = "ab"` 与 `s = "aa"`不是同构的。即相同位置的字母是互相等价的，能够互换。可以利用 `HashMap` 键值对应的性质来解决此题，即一个键只能对应一个值，如果对应了其他值，则说明两个字符串不是同构的。但需要注意第一次使用 `s`中的字符作为 `key`, 第二次使用 `t` 中的字符作为 `key`。
+
+[代码](./src/main/java/hash/IsomorphicStrings.java)
 ```java
 public  boolean isIsomorphic(String s, String t){
        return isomorphic(s, t) && isomorphic(t, s);
@@ -134,6 +140,7 @@ public  boolean isIsomorphic(String s, String t){
 为了获取 B 的个数，可以统计猜错位置每个数字的个数，用一个长度为10的int类型数组表示，下标表示每个数字，对应每个数组值
 表示数字的个数。
 
+[代码](./src/main/java/hash/BullsAndCows.java)
 ```java
 public String getHint(String secret, String guess){
         if(secret == null) return null;
@@ -165,6 +172,8 @@ public String getHint(String secret, String guess){
 #### 方法二：滑动窗口法
 使用 i、j 表示下标，每次寻找最大 j 满足：s[i]~s[j] 没有重复字母，查询是否有重复字母时可以使用 `HashSet`，
 因为`contains()` 操作时间复杂的为`O(1)`.
+
+[代码](./src/main/java/hash/LongestSubString.java)
 ```java
 public int lengthOfLongestSubstring2(String s){
         HashSet<Character> set = new HashSet<>();
@@ -188,6 +197,7 @@ public int lengthOfLongestSubstring2(String s){
 ### 6.Copy-List-With-Random-Pointer
 [参考链接](https://leetcode-cn.com/problems/copy-list-with-random-pointer/solution/fu-zhi-dai-sui-ji-zhi-zhen-de-lian-biao-by-leetcod/)
 复制带有随机指针的链表，节点如下：
+
 ```java
 class Node {
     public int val;

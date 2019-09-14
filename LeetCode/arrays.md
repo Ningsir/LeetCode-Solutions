@@ -5,6 +5,8 @@
 ### SubarraySums
 题目描述
 > Given an array A of integers, return the number of (contiguous, non-empty) subarrays that have a sum divisible by K.
+
+[代码](./src/main/java/arrays/SubarraySums.java)
 * 方法一：暴力解法
 
 使用两层for循环进行遍历即可解决，但时间成本太大

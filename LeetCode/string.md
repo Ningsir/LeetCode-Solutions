@@ -13,7 +13,7 @@ The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of 
 
 And then read line by line: "PAHNAPLSIIGYIR"
 
-代码
+[代码](/src/main/java/string/ZigZag.java)
 ```java
  /**
      * 注意：变长字符串使用StringBuilder
