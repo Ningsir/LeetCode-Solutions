@@ -4,7 +4,7 @@
 * [3.Isomorphic String(同构字符串)](#3.Isomorphic-String)
 * [4.BullsAndCows](#4.BullsAndCows)
 * [5.Longest-Substring-Without-Repeating-Characters](#5.Longest-Substring-Without-Repeating-Characters)
-
+* [6.Copy-List-With-Random-Pointer](#6.Copy-List-With-Random-Pointer)
 # 哈希表
 ### 1.Single-Number
 题目描述
@@ -184,3 +184,23 @@ public int lengthOfLongestSubstring2(String s){
     }
 
 ```
+
+### 6.Copy-List-With-Random-Pointer
+[参考链接](https://leetcode-cn.com/problems/copy-list-with-random-pointer/solution/fu-zhi-dai-sui-ji-zhi-zhen-de-lian-biao-by-leetcod/)
+复制带有随机指针的链表，节点如下：
+```java
+class Node {
+    public int val;
+    public Node next;
+    public Node random;
+
+    public Node() {}
+
+    public Node(int _val,Node _next,Node _random) {
+        val = _val;
+        next = _next;
+        random = _random;
+    }
+}
+```
+
