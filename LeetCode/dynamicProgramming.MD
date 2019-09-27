@@ -12,6 +12,8 @@
 ### 1.Unique-BST
 题目描述：
 > Given an integer n, generate all structurally unique BST's (binary search trees) that store values 1 ... n.
+(树的总数为：卡特兰数)
+
 [代码](src/main/java/dynamic/UniqueBst.java)
 
 ```java
