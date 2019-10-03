@@ -6,3 +6,7 @@
 [2.arrays](/LeetCode/arrays.md)
 
 [3.string](./LeetCode/string.md)
+
+[4.dyanmic programming](./LeetCode/dynamicProgramming.MD)
+
+[5.dfs](./LeetCode/dfs.md)
