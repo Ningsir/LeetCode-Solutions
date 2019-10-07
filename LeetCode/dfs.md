@@ -1,6 +1,7 @@
 ## DFS
 ### 目录
 * [1.二叉树原地展开为链表](#1flatten-binary-tree-to-a-linked-list)
+* [2.步进数](#2stepping-number)
 
 ### 深度优先算法
 对于二叉树的深度优先算法，其实就是先序遍历
@@ -65,5 +66,52 @@ class Solution:
         while root.right is not None:
             root = root.right
         root.right = tmp
+        
+```
+
+### 2.stepping-number
+#### 题目描述
+> 如果一个整数上的每一位数字与其相邻位上的数字的绝对差都是 1，那么这个数就是一个「步进数」。
+例如，321 是一个步进数，而 421 不是。
+给你两个整数，low 和 high，请你找出在 [low, high] 范围内的所有步进数，并返回 排序后 的结果。
+
+#### 分析
+比如说2是一个步进数，那么下一个以2开头的两位数应该是21 和 23（即 `21 = 2 * 10 + 2 - 1`, `23 = 2 * 10 + 2 + 1`）, 可以从中发现另外3~8也满足该规律，注意一下1 和 9两个边界情况即可。可以采用深度优先搜索解决问题，依次搜索以某个步进数为开头的下一个步进数。
+```python
+class Solution:
+     
+    hashset = set()
+
+    def countSteppingNumbers(self, low: int, high: int):
+        self.hashset.add(0)
+        for i in range(1, 10):
+            self.hashset.add(i)
+            self.bfs(i, high)
+        ans = []
+        for i in sorted(list(self.hashset)):
+            if i > high:
+                break
+            if low <= i <= high:
+                ans.append(i)
+        return ans
+        pass
+    # 搜索以low为高位的下一步进数，直到大于high为止
+    def bfs(self, low, high):
+        if low >= high:
+            return
+        tail = low % 10 # 尾数
+
+        #下一个步进数的尾数为 tail-1 或者tail+1
+        if tail == 0:
+            self.hashset.add(low * 10 + tail + 1)
+            self.bfs(low * 10 + tail + 1, high)
+        elif tail == 9:
+            self.hashset.add(low * 10 + tail - 1)
+            self.bfs(low * 10 + tail - 1, high)
+        else:
+            self.hashset.add(low * 10 + tail - 1)
+            self.hashset.add(low * 10 + tail + 1)
+            self.bfs(low * 10 + tail - 1, high)
+            self.bfs(low * 10 + tail + 1, high)
         
 ```
