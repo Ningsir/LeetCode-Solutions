@@ -2,6 +2,23 @@
 ### 目录
 * [1.二叉树原地展开为链表](#1flatten-binary-tree-to-a-linked-list)
 
+### 深度优先算法
+对于二叉树的深度优先算法，其实就是先序遍历
+```python
+def preorderTraversal(self, root: TreeNode) -> List[int]:
+        if root is None:
+            return []
+        stack = [root]
+        ans = []
+        while len(stack) != 0:
+            node = stack.pop()
+            ans.append(node.val)
+            if node.right:
+                stack.append(node.right)
+            if node.left:
+                stack.append(node.left)
+        return ans
+```
 ### 1.flatten-binary-tree-to-a-linked-list
 #### 题目描述
 Given a binary tree, flatten it to a linked list in-place.
