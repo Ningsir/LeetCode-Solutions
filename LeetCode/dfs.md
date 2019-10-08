@@ -2,6 +2,7 @@
 ### 目录
 * [1.二叉树原地展开为链表](#1flatten-binary-tree-to-a-linked-list)
 * [2.步进数](#2stepping-number)
+* [3.填充二叉树每个节点的next指针](#3populate-next-pointer)
 
 ### 深度优先算法
 对于二叉树的深度优先算法，其实就是先序遍历
@@ -114,4 +115,56 @@ class Solution:
             self.bfs(low * 10 + tail - 1, high)
             self.bfs(low * 10 + tail + 1, high)
         
+```
+
+### 3.populate-next-pointer
+#### 题目描述
+> You are given a perfect binary tree where all leaves are on the same level, and every parent has two children. The binary tree has the following definition:
+```
+struct Node {
+  int val;
+  Node *left;
+  Node *right;
+  Node *next;
+}
+```
+>Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.
+Initially, all next pointers are set to NULL.
+(填充一棵完美二叉树（完全填充满的二叉树）的next指针，即用next指针从左至右连接树中每层的节点)
+
+#### 分析
+只需要将左右子树相邻的节点用next指针连接起来，又因为是完美二叉树，只需对左子树一直向右儿子遍历，对右子树一直向左儿子遍历即可，然后对左右子树使用递归即可，比较简单
+
+#### 问题拓展
+将原问题中的二叉树改成一棵普通二叉树。比较容易想到的一个思路是使用层序遍历，然后将每一层的节点通过next指针连接即可。
+
+也可以继续使用递归，但递归方法连接左右子树的相邻节点变得更加复杂。可以通过父节点的next指针来查找右儿子的下一个next对象，但需要注意的是，这样需要先递归右子树。
+```python
+    def connect(self, root):
+        if not root:
+            return root
+        # 填充左儿子的next
+        if root.left:
+            if root.right:
+                root.left.next = root.right
+            else:
+                root.left.next = self.nextNode(root.next)
+        # 填充右儿子的next
+        if root.right:
+            root.right.next = self.nextNode(root.next)
+        # 必须先递归右子树，否则左子树上的节点调用nextNode()方法，而右子树next为空
+        self.connect1(root.right)
+        self.connect1(root.left)
+
+        pass
+
+    # 寻找next节点
+    def nextNode(self, root: Node):
+        while root:
+            if root.left:
+                return root.left
+            elif root.right:
+                return root.right
+            root = root.next
+        return None
 ```
