@@ -7,7 +7,7 @@
 
 [3.string](./LeetCode/string.md)
 
-[4.dyanmic programming](./LeetCode/dynamicProgramming.MD)
+[4.dynamic programming](./LeetCode/dynamicProgramming.MD)
 
 [5.dfs](./LeetCode/dfs.md)
 
