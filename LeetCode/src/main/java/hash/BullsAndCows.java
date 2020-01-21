@@ -1,5 +1,7 @@
 package hash;
 
+import java.util.HashSet;
+
 /**
  * @author 宁鑫
  * @date 2019/9/10

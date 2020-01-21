@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import sun.reflect.generics.tree.Tree;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -51,6 +52,7 @@ public class UniqueBst {
         UniqueBst uniqueBst = new UniqueBst();
         List<TreeNode> list =uniqueBst.generateTrees(3);
         System.out.println(list.size());
+
     }
 
     @Test
