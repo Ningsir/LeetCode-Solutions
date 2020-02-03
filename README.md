@@ -12,3 +12,5 @@
 [5.dfs](./LeetCode/dfs.md)
 
 [6.bfs](./LeetCode/bfs.md)
+
+[7.stack](./LeeCode/stack.md)
