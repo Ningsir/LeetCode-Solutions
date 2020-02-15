@@ -4,6 +4,7 @@
 * [1.Unique BST](#1unique-bst)
 * [2.Word Break](#2word-break)
 * [3.Perfect Square（完全平方数）](#3perfect-square)
+* [4.0-1背包问题](#40-1-package)
 
 ## 简介
 > 动态规划（英语：Dynamic programming，简称 DP）是一种在数学、管理科学、计算机科学、经济学和生物信息学中使用的，通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。 
@@ -115,4 +116,10 @@ def numSquares(self, n):
 
     def isSquare(self, n):
         return math.floor(math.sqrt(n)) ** 2 == n
+```
+
+### 4.0-1-package
+
+```
+有n个物品，它们有各自的体积和价值，现有给定容量的背包，如何让背包里装入的物品具有最大的价值总和？
 ```
