@@ -4,6 +4,7 @@
 * [2.步进数](#2stepping-number)
 * [3.填充二叉树每个节点的next指针](#3populate-next-pointer)
 * [4.岛屿数量](#4number-of-islands)
+* [5.增长子序列](#5increasing-subsequences)
 
 ### 深度优先算法
 对于二叉树的深度优先算法，其实就是先序遍历
@@ -176,3 +177,25 @@ Initially, all next pointers are set to NULL.
 给定一个由 '1'（陆地）和 '0'（水）组成的的二维网格，计算岛屿的数量。一个岛被水包围，并且它是通过水平方向或垂直方向上相邻的陆地连接而成的。你可以假设网格的四个边均被水包围。
 ```
 使用bfs或者dfs求连通分量的数量即可
+
+### 5.increasing-subsequences
+题目[增长子序列](https://leetcode-cn.com/problems/increasing-subsequences/)
+```
+给定一个整型数组, 你的任务是找到所有该数组的递增子序列，递增子序列的长度至少是2。
+```
+使用set去重
+```python
+class Solution:
+    def findSubsequences(self, nums: List[int]) -> List[List[int]]:
+        res = set()
+        n = len(nums)
+        def dfs(i, tmp):
+            if len(tmp) > 1 and tmp not in res:
+                res.add(tmp)
+            for j in range(i + 1, n):
+                if(tmp[-1] <= nums[j]):
+                    dfs(j, tmp + (nums[j], ))
+        for k in range(n):
+            dfs(k, (nums[k], ))
+        return [list(i) for i in res]
+```
