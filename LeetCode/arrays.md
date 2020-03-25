@@ -1,6 +1,7 @@
 # Array
 ## 目录
  * 1. [SubarraySumsDivByK(连续子数组和被K整除)](#SubarraySums)
+ * 2. [盛最多水的容器](#ContainerWithMostWater)
 
 ### SubarraySums
 题目描述
@@ -69,4 +70,30 @@ public int subarraysDivByK(int[] A, int K){
         return res + count[0];
 
     }
+```
+
+### ContainerWithMostWater
+```
+给你 n 个非负整数 a1，a2，...，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
+```
+#### 思路：双指针
+使用首尾两个指针i、j对数组进行遍历，因为容器的大小：`min(ai, aj) * (j - i)`,其长度是由短的一条边决定的，所以为了使容器的大小更大，需要替换短的边。
+
+```c++
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int res = 0;
+        int i = 0, j = height.size() - 1;
+        while(i < j){
+            res = max(res, min(height[i], height[j]) * (j - i));
+            if(height[i] < height[j]){
+                i++;
+            }else{
+                j--;
+            }
+        }
+        return res;
+    }
+};
 ```
