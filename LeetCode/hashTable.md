@@ -225,7 +225,7 @@ class Node {
 
 那么成功对给定单词列表进行编码的最小字符串长度是多少呢？
 ```
-
+将words添加进hashset，然后判断每个单词的substring是否在hashset，如果在，则将其删除，因为该单词是某一单词的后缀。
 ```cpp
 int minimumLengthEncoding(vector<string>& words) {
         set<string> tmp(words.begin(), words.end());
