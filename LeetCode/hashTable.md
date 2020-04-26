@@ -18,7 +18,6 @@
   异或运算有如下规律：
  * a ^ 0 = a;
  * a ^ a = 0;
- * a ^ b = 1;(a != b)
  * 满足交换律
  
  [代码](./src/main/java/hash/SingleNumber.java)
