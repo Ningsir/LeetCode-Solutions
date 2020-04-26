@@ -1,0 +1,1 @@
+g++ phoneNumber.cpp & .\a.exe
