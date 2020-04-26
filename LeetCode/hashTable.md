@@ -5,6 +5,7 @@
 * [4.BullsAndCows](#4BullsAndCows)
 * [5.Longest-Substring-Without-Repeating-Characters](#5Longest-Substring-Without-Repeating-Characters)
 * [6.Copy-List-With-Random-Pointer](#6Copy-List-With-Random-Pointer)
+* [7.单词的压缩编码](#7short-encoding-of-words)
 # 哈希表
 ### 1.Single-Number
 题目描述
@@ -17,7 +18,6 @@
   异或运算有如下规律：
  * a ^ 0 = a;
  * a ^ a = 0;
- * a ^ b = 1;(a != b)
  * 满足交换律
  
  [代码](./src/main/java/hash/SingleNumber.java)
@@ -214,3 +214,29 @@ class Node {
 }
 ```
 
+### 7.short-encoding-of-words
+```
+给定一个单词列表，我们将这个列表编码成一个索引字符串 S 与一个索引列表 A。
+
+例如，如果这个列表是 ["time", "me", "bell"]，我们就可以将其表示为 S = "time#bell#" 和 indexes = [0, 2, 5]。
+
+对于每一个索引，我们可以通过从字符串 S 中索引的位置开始读取字符串，直到 "#" 结束，来恢复我们之前的单词列表。
+
+那么成功对给定单词列表进行编码的最小字符串长度是多少呢？
+```
+将words添加进hashset，然后判断每个单词的substring是否在hashset，如果在，则将其删除，因为该单词是某一单词的后缀。
+```cpp
+int minimumLengthEncoding(vector<string>& words) {
+        set<string> tmp(words.begin(), words.end());
+        for(auto word : words){
+            for(int i = 1; i < word.size(); i++){
+                tmp.erase(word.substr(i));
+            }
+        }
+        int res = 0;
+        for(auto word : tmp){
+            res += word.size() + 1;
+        }
+        return res;
+}
+```
